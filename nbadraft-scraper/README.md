@@ -1,132 +1,149 @@
-![Java](https://img.shields.io/badge/Java-26+-orange)
+![Java](https://img.shields.io/badge/Java-21-orange)
 ![Maven](https://img.shields.io/badge/Maven-4.x-blue)
 ![Jsoup](https://img.shields.io/badge/Jsoup-HTML_Parsing-green)
 ![Jackson](https://img.shields.io/badge/Jackson-JSON_Processing-black)
 
-# NBADraft Scraper
+# NBADraft Scraper • NBA Data Acquisition Engine
 
-Scrape NBA player stats, contracts & headshots from Basketball-Reference and ESPN in one command.
+Automated NBA data collection engine responsible for gathering player statistics, contracts, headshots, and team assets from multiple sources.
 
-This project gathers data from **Basketball-Reference** (Stats \& Contracts) and the **ESPN Hidden API** (Player Headshots \& Team Logos), combining them into clean, structured JSON files.
+The scraper serves as the foundation of the NBADraft ecosystem by producing structured datasets consumed by the backend API and frontend application.
 
-## Features
+## ✨ Key Features
 
-* **Dual-Source Scraping:** Merges HTML table parsing (Jsoup) with hidden JSON API consumption.
+* Multi-source NBA data acquisition
+* Automated player statistics collection
+* Contract and salary data extraction
+* Team logo acquisition
+* Player headshot collection
+* Structured JSON dataset generation
+* Resumable scraping sessions
+* Intelligent retry mechanisms
+* Automated dataset merging
+* Immutable data modeling using Java Records
 
-* **Resilience \& Anti-Ban System:** Built-in mechanisms to respect server rate limits, including random request delays (Jitter) and Exponential Backoff for retries.
+## 🏗️ Architecture
 
-* **Smart Resume:** Automatically tracks scraping progress. If interrupted, the script resumes exactly where it left off without duplicating data.
+### Data Collection Layer
 
-* **Modern Java Architecture:** Utilizes Java Records for immutable data models and follows clean code principles (separation of concerns, robust exception handling).
+The scraper combines multiple acquisition strategies:
 
-* **Automated Data Merging (Read-Merge-Write):** Dynamically updates JSON output files without overwriting previously scraped teams.
+* HTML scraping through Basketball-Reference
+* Hidden JSON API consumption through ESPN endpoints
+* Asset downloading (logos and headshots)
+* Structured data normalization
 
+### Processing Layer
 
+Collected data is validated, transformed, and merged into unified datasets before being exported.
 
-## Technologies Used
+### Output Layer
 
-* **Java 14+** (Uses `Records` for data modeling)
+Generated files are consumed directly by the NBADraft Backend API for database synchronization and analytics processing.
 
-* **Maven** (Dependency management)
+## 🛠️ Technologies Used
 
-* **Jsoup** (HTML parsing and API HTTP requests)
+* **Java 21**
+* **Maven**
+* **Jsoup**
+* **Jackson**
+* **Java Records**
+* **JSON Data Pipelines**
 
-* **Jackson (FasterXML)** (JSON serialization/deserialization)
+## 🔄 Data Pipeline
 
-## Getting Started
-
-### Prerequisites
-
-* Java Development Kit (JDK) 14 or higher.
-
-* Maven installed on your machine.
-
-### Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/redabensaad/nbadraft.git
+```text
+Basketball Reference
+│
+▼
+HTML Parsing
+│
+▼
+Data Extraction
+│
+▼
+ESPN Hidden APIs
+│
+▼
+Data Enrichment
+│
+▼
+Data Validation
+│
+▼
+JSON Generation
+│
+▼
+NBADraft API
 ```
 
-2. Navigate to the project directory:
+## 📊 Collected Data
 
-```bash
-cd nbadraft-scraper
-```
+### Players
 
-3. Build the project using Maven:
+* Player Profiles
+* Positions
+* Ages
+* Teams
 
-```bash
-mvn clean install
-```
+### Statistics
 
+* Points Per Game
+* Rebounds
+* Assists
+* Games Played
+* Additional Performance Metrics
 
-## Usage
+### Contracts
 
-Run the `Main.java` class from your IDE, or execute the compiled jar.
-Upon launching, the interactive console menu will ask you to choose an action:
+* Salary Information
+* Remaining Contract Years
+* Future Earnings
+* Contract Options
 
-```
-=== WELCOME TO THE NBA DATA SCRAPER ===
+### Media Assets
 
-What do you want to do?
+* Player Headshots
+* Team Logos
 
-1 - Fetch team logos
+## ⚡ Reliability Features
 
-2 - Scrape player data
+### Smart Resume
 
-Choice (1/2):
-```
+Interrupted scraping sessions can resume from the last processed team without duplicating data.
 
-**Option 1: Fetch Team Logos**
+### Anti-Rate Limiting
 
-Downloads high-quality `.png` logos for all 30 NBA teams into 
-`src/main/resources/images/team/`.
+Built-in protection mechanisms include:
 
-**Option 2: Scrape Player Data**
+* Randomized delays (Jitter)
+* Exponential Backoff retries
+* Controlled request pacing
 
-1. Scrapes the roster and contract details for each team.
+### Data Preservation
 
-2. Fetches individual player stats.
+A Read-Merge-Write strategy prevents accidental overwriting of previously collected datasets.
 
-3. Downloads the player's official ESPN headshot into `src/main/resources/images/players/{TEAM}/`.
+## 🎯 Project Goals
 
-4. Saves the structured data into `src/main/resources/data/players-data.json`.
+* Automate NBA data collection
+* Eliminate manual dataset maintenance
+* Generate reliable JSON datasets
+* Provide structured data for analytics applications
+* Supply the NBADraft platform with up-to-date information
 
-***Note: If you stop the execution during Option 2, restarting it will prompt you to resume from the last uncompleted team.***
+## 🔮 Future Enhancements
 
-## Output Example (JSON)
+* Multi-season historical collection
+* Automated scheduling
+* Incremental updates
+* Additional data providers
+* Advanced data validation
+* Data quality metrics
 
-Here is an example of how the scraped data is formatted in `players-data.json`:
+## 📦 Project Status
 
-```json
-{
-  "name": "Stephen Curry",
-  "teamId": "GSW",
-  "age": 36,
-  "contract": {
-    "capHit": 51915615,
-    "seasonRemaining": 2,
-    "nextSeasonEarning": 55761217,
-    "option": "NONE"
-  },
-  "stats": {
-    "points": 26.4,
-    "rebound": 4.5,
-    "assists": 5.1,
-    "gamePlayed": 74,
-    "position": "PG"
-  },
-  "headShotPath": "curryst01.png"
-}
-```
+**Completed • Data Acquisition Module**
 
-## Disclaimer
-
-This tool is for **educational purposes only**. Web scraping should be done responsibly. 
-This project is configured by default with conservative delays (***JITTER_MS*** and ***BASE_DELAY_MS***) to mimic human behavior and respect the host servers' resources. 
-Do not drastically reduce these delays, or you may face temporary IP bans (HTTP 429).
-
-
+This module serves as the data ingestion layer of the NBADraft ecosystem, collecting and transforming NBA information into structured datasets that power both the backend API and frontend application.
 

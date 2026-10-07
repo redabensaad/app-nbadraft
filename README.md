@@ -11,137 +11,84 @@
 ![Nginx](https://img.shields.io/badge/Nginx-Reverse_Proxy-009639)
 ![Docker](https://img.shields.io/badge/Docker-Container-2496ed)
 
-# NBADraft • Fullstack NBA Expansion Draft Platform (Spring Boot 3 + Angular 19)
+# NBADraft
 
-NBA Expansion Draft simulation platform combining automated data collection, REST APIs, and modern frontend visualization.
+NBA Expansion Draft simulation platform combining automated data collection, REST APIs and modern frontend visualization.
 
-The project allows users to explore NBA players, analyze contracts, manage salary cap constraints, and simulate expansion draft scenarios using real-world data gathered through a custom scraping engine.
+> \> [Live Preview](https://redabensaad.github.io/nbadraft)
 
-This repository is organized as a monorepo containing the backend API, frontend application, and NBA data acquisition pipeline.
+---
 
-## ✨ Key Features
+$ Context
 
-* Automated NBA player and contract data collection
-* NBA Expansion Draft simulation
-* Salary Cap management and validation
-* Player statistics visualization
-* Team and roster exploration
-* Interactive dashboards and analytics
-* RESTful API architecture
-* OpenAPI / Swagger documentation
-* Modern Angular user experience
-* Centralized data ingestion and synchronization
+NBADraft is a full-stack platform designed to simulate NBA expansion draft scenarios using real-world player, contract and team data.
 
-## 🏀 Core Modules
+The repository follows a monorepo architecture containing the data acquisition pipeline, backend API and frontend application.
 
-### Frontend Application
+---
 
-* Interactive NBA dashboards
-* Expansion Draft simulation workflows
-* Salary Cap calculations
-* Player and contract exploration
-* Responsive Angular Material interface
+$ Domain
 
-### Backend API
+> \> NBA analytics<br>
+> \> Expansion draft simulation<br>
+> \> Salary cap management<br>
+> \> Roster construction<br>
+> \> Sports data visualization<br>
 
-* NBA player management
-* Team and roster management
-* Contract management
-* Data synchronization engine
-* REST API exposure
+---
 
-### Data Scraper
+$ What Was Built
 
-* Basketball-Reference scraping
-* ESPN hidden API integration
-* Player headshot collection
-* Team logo collection
-* Automated JSON dataset generation
+> \> Automated NBA data collection<br>
+> \> Expansion draft simulation workflows<br>
+> \> Salary cap management and validation<br>
+> \> Player statistics visualization<br>
+> \> Team and roster exploration<br>
+> \> Interactive dashboards and analytics<br>
+> \> REST API architecture<br>
+> \> OpenAPI documentation<br>
+> \> Centralized data synchronization<br>
+> \> Modern Angular user experience<br>
 
-## 🏗️ Architecture
+---
 
-### Data Acquisition Layer
+$ Technical Stack
 
-The scraper gathers player statistics, contracts, headshots, and team assets from multiple sources and transforms them into structured JSON datasets.
+> \> Java 21<br>
+> \> Spring Boot 3.4<br>
+> \> Angular 19<br>
+> \> TypeScript<br>
+> \> Angular Material<br>
+> \> MySQL<br>
+> \> Jsoup<br>
+> \> Jackson<br>
+> \> Swagger / OpenAPI<br>
+> \> Docker<br>
+> \> Nginx<br>
 
-### Backend Layer
+---
 
-Spring Boot API exposing NBA data through REST endpoints while managing persistence, synchronization, and business rules.
+$ Architecture
 
-### Frontend Layer
+The platform is composed of three main modules.
 
-Angular application responsible for data visualization, roster management, and expansion draft simulations.
+The scraper gathers and transforms NBA data from multiple public sources.
 
-### Deployment Layer
+The backend exposes structured datasets through REST APIs while the frontend provides visualization, analytics and simulation tools.
 
-Containerized architecture designed for deployment using Docker and Nginx.
+The solution is designed as a complete data acquisition, processing and presentation pipeline.
 
-## 🛠️ Technologies Used
+---
 
-### Backend
+$ Project Status
 
-* Java 21
-* Spring Boot 3
-* Spring Data JPA
-* MySQL
-* Swagger / OpenAPI
-* Lombok
+> \> Active development<br>
+> \> Monorepo architecture<br>
+> \> Full-stack application<br>
+> \> Sports analytics platform<br>
 
-### Frontend
+---
 
-* Angular 19
-* Angular Signals
-* Angular Standalone Components
-* Angular Material
-* TypeScript
-* RxJS
+$ Notes
 
-### Scraping & Data Processing
-
-* Java Records
-* Jsoup
-* Jackson
-* JSON Data Pipelines
-
-### DevOps
-
-* Docker
-* Nginx
-
-## 📊 Data Sources
-
-The platform combines information from multiple public NBA-related sources, including:
-
-* Player statistics
-* Team information
-* Contract details
-* Player headshots
-* Team branding assets
-
-All collected data is transformed into structured datasets consumed by the backend API.
-
-## 🎯 Project Goals
-
-* Simulate the NBA Expansion Draft process
-* Provide realistic roster-building scenarios
-* Analyze contracts and salary cap implications
-* Centralize NBA player information
-* Demonstrate modern full-stack and data engineering practices
-
-## 🚀 Future Enhancements
-
-* User authentication and profiles
-* Saved draft simulations
-* Advanced player comparison tools
-* Predictive analytics
-* Historical draft scenarios
-* Multi-season simulations
-* AI-assisted roster recommendations
-
-## 📦 Project Status
-
-**Active Development**
-
-NBADraft is currently under active development, with ongoing improvements focused on data quality, business rules, simulation capabilities, user experience, and long-term maintainability.
-
-The project serves as a complete showcase of data acquisition, backend engineering, API design, and modern Angular frontend development within a sports analytics domain.
+This project was developed collaboratively and showcases data engineering, backend development and modern Angular application design within the NBA analytics domain.

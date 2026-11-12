@@ -92,3 +92,15 @@ $ Project Status
 $ Notes
 
 This project was developed collaboratively and showcases data engineering, backend development and modern Angular application design within the NBA analytics domain.
+
+---
+
+$ Preview
+
+![NBADraft](shot/nbadraft.png)
+
+---
+
+$ Built
+
+✓ 2025-2026

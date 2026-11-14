@@ -19,7 +19,6 @@ public class DataSaver {
     private static final String BASE_PATH = "src/main/resources/data/";
 
     public DataSaver() {
-
         this.mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         this.objectSaves = new HashMap<>();
         try {

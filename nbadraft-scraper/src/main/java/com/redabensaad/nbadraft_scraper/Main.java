@@ -58,7 +58,7 @@ public class Main {
             saver.addObject("team-scraper.json", teamCode);
             saver.saveObjects();
 
-            System.out.printf("Team %s completed — progress saved.\n", teamCode);
+            System.out.printf("\nTeam %s completed — progress saved.\n", teamCode);
         }
     }
 
